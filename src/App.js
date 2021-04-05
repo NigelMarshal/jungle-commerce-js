@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Products from './Components/Products/Products';
 
 function App() {
     return (
-        <div>
-            Let's goooooo
-        </div>
+        <Products />
     )
 }
 
