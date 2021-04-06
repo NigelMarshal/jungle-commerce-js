@@ -6,7 +6,11 @@ import {Link} from 'react-router-dom';
 
 import useStyles from './styles';
 
-const CheckoutCart = ({ cart }) => {
+const CheckoutCart = ({ 
+    cart,
+    handleUpdateItemQuantity,
+    handleRemoveFromCart,
+    handleEmptyCart}) => {
 
     const isCartEmpty = !cart.line_items?.length;
     
@@ -23,7 +27,7 @@ const CheckoutCart = ({ cart }) => {
             <Grid container spacing={4}>
                 {cart.line_items.map((item) => (
                     <Grid item xs={12} sm={3} key={item.id}>
-                        <CheckoutCartItem item={item} />
+                        <CheckoutCartItem item={item} handleRemoveFromCart={handleRemoveFromCart} handleUpdateItemQuantity={handleUpdateItemQuantity}/>
                     </Grid>
                 ))}
             </Grid>
@@ -38,6 +42,7 @@ const CheckoutCart = ({ cart }) => {
                         variant="contained"
                         color="secondary"
                         startIcon={<DeleteIcon />}
+                        onClick={handleEmptyCart}
                         >
                             Empty your cart
                         </Button>
