@@ -5,7 +5,7 @@ import {ShoppingCart} from '@material-ui/icons';
 import useStyles from './styles';
 
 
-const Header = () => {
+const Header = ({totalItemsInCart}) => {
     const classes = useStyles();
     return (
         <div>
@@ -18,7 +18,7 @@ const Header = () => {
                     <div className={classes.grow} />
                     <div className={classes.button}>
                         <IconButton aria-label="Show cart">
-                            <Badge badgeContent={42} color="primary">
+                            <Badge badgeContent={totalItemsInCart} color="primary">
                                 <ShoppingCart />
                             </Badge>
                         </IconButton>
