@@ -3,12 +3,12 @@ import {Card, CardMedia, CardContent, CardActions, Typography, IconButton } from
 import { AddShoppingCart} from '@material-ui/icons';
 import useStyles from './styles';
 
-const Product = ({product}) => {
+const Item = ({product}) => {
     const classes = useStyles();
 
     return (
        <Card className={classes.root}>
-           <CardMedia className={classes.media} image='https://dummyimage.com/600x400/000/fff' title={product.name}/>
+           <CardMedia className={classes.media} image={product.image} title={product.name}/>
            <CardContent>
                <div>
                    <Typography gutterBottom variant="h5" component="h2">
@@ -32,4 +32,4 @@ const Product = ({product}) => {
     )
 }
 
-export default Product
+export default Item
