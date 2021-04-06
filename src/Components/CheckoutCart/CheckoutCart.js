@@ -2,6 +2,7 @@ import React from 'react'
 import {Typography, Container, Grid, Button} from '@material-ui/core';
 import CheckoutCartItem from './CheckoutCartItem/CheckoutCartItem';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {Link} from 'react-router-dom';
 
 import useStyles from './styles';
 
@@ -12,7 +13,9 @@ const CheckoutCart = ({ cart }) => {
     const classes = useStyles();
 
     const CreateEmptyCart = () => (
-        <Typography variant="subtitle1">You have nothing in your cart!</Typography>
+        <Typography variant="subtitle1">You have nothing in your cart!
+            <Link to="/" className={classes.link}>Click here to waste your money on fancy things</Link>            
+        </Typography>
     );
 
     const CreateFilledCart = ({item}) => (
