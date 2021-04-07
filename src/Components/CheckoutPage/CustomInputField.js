@@ -8,6 +8,7 @@ function FormInputField ({name, label, required}) {
     return (
             <Grid item xs={12} sm={6}>
                 <Controller 
+                    defaultValue=""
                     as={TextField} 
                     control={control}
                     fullWidth
