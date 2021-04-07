@@ -18,7 +18,7 @@ const CheckoutCart = ({
 
     const CreateEmptyCart = () => (
         <Typography variant="subtitle1">You have nothing in your cart!
-            <Link to="/" className={classes.link}>Click here to waste your money on fancy things</Link>            
+            <Link to="/" className={classes.link}> Click here to waste your money on fancy things</Link>            
         </Typography>
     );
 
@@ -33,7 +33,7 @@ const CheckoutCart = ({
             </Grid>
             <div className={classes.cardDetails}>
                     <Typography variant="h4" color="primary">
-                        Total {cart.subtotal.formatted_with_symbol}
+                        Total {cart.subtotal.formatted_with_code}
                     </Typography>
                     <div>
                         <Button className={classes.emptyButton}
@@ -66,7 +66,7 @@ const CheckoutCart = ({
     return (
         <Container>
             <div className={classes.toolbar} />
-            <Typography className={classes.title} variant="h1">
+            <Typography className={classes.title} variant="h4">
                 Your Shopping Cart
             </Typography>
             {isCartEmpty ? <CreateEmptyCart /> : <CreateFilledCart />}

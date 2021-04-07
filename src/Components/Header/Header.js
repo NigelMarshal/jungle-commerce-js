@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../img/logo.jpg'
+import logo from '../../img/logo.png'
 import {Typography, AppBar, IconButton, Toolbar, Badge} from '@material-ui/core'
 import {ShoppingCart} from '@material-ui/icons';
 import { Link, useLocation } from 'react-router-dom';
@@ -17,13 +17,15 @@ const Header = ({totalItemsInCart}) => {
                 <Toolbar>
                     <Typography component={Link} to="/" >
                         <img src={logo} height="50px" width="50px" alt="logo" className={classes.image} />
-                            JuNgLe
+                    </Typography>
+                    <Typography className={classes.logo} variant="subtitle1">
+                        JuNgLe
                     </Typography>
                     <div className={classes.grow} />
                     { location.pathname === '/' && (
                         <div className={classes.button}>
                             <IconButton component={Link} to="/checkoutcart" aria-label="Show cart">
-                                <Badge badgeContent={totalItemsInCart} color="primary">
+                                <Badge badgeContent={totalItemsInCart} color="secondary">
                                     <ShoppingCart />
                                 </Badge>
                             </IconButton>

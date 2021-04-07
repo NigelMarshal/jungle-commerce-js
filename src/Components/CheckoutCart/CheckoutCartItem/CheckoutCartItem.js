@@ -11,11 +11,11 @@ const CheckoutCartItem = ({item, handleUpdateItemQuantity, handleRemoveFromCart}
     <Card>
         <CardMedia image={item.media.source} alt={item.name} className={classes.media}/>
         <CardContent className={classes.cardContent}>
-            <Typography gutterBottom variant="h5" >
+            <Typography gutterBottom variant="h6" >
                 {item.name}
             </Typography>
-            <Typography  variant="h6">
-                {item.line_total.formatted_with_symbol}
+            <Typography  variant="subtitle1">
+                {item.line_total.formatted_with_code}
             </Typography>
         </CardContent>
         <CardActions className={classes.cardActions}>

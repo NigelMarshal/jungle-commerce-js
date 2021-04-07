@@ -12,7 +12,7 @@ const Products = ({products, onAddToCart}) =>{
         <div className={classes.toolbar} />
             <Grid container justify="center" spacing={6}>
             {products.map((product) => (
-                <Grid item key={product.id} >
+                <Grid item key={product.id} className={classes.flex} >
                     <Item product={product} onAddToCart={onAddToCart} />
                 </Grid>
             ))}

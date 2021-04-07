@@ -9,4 +9,9 @@ export default makeStyles(() => ({
     width: 250,
     marginTop: '10%',
   },
+  flex: {
+    display: "flex",
+    flexDirection: "column",
+    color: "black"
+  }
 }));

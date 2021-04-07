@@ -4,6 +4,8 @@ export default makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
+    paddingBottom: "50px",
+    color: "black"
   },
   emptyButton: {
     minWidth: '150px',
