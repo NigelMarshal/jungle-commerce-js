@@ -46,7 +46,9 @@ const CheckoutCart = ({
                         >
                             Empty your cart
                         </Button>
-                        <Button className={classes.checkoutButton}
+                        <Button
+                        component={Link} to="/checkout"
+                        className={classes.checkoutButton}
                         size="medium"
                         type="button"
                         variant="contained"
