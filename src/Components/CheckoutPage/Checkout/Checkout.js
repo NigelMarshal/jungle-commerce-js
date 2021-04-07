@@ -7,7 +7,7 @@ import {commerce} from '../../../lib/commerce'
 
 const steps = ['Address', 'Payment details']
 
-const Checkout = ({cart}) => {
+const Checkout = ({cart, order, onCaptureCheckout, error}) => {
     const [activeStep, setActiveStep] = useState(0);
     const [checkoutToken, setCheckoutToken] = useState(null);
     const [shippingDetails, setShippingDetails] = useState({});
@@ -41,7 +41,7 @@ const Checkout = ({cart}) => {
         </div>
     );
 
-    const Form = () => activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next} /> : <PaymentForm shippingDetails={shippingDetails} checkoutToken={checkoutToken} />
+    const Form = () => activeStep === 0 ? <AddressForm checkoutToken={checkoutToken} next={next} /> : <PaymentForm shippingDetails={shippingDetails} nextStep={nextStep} checkoutToken={checkoutToken} backStep={backStep} onCaptureCheckout={onCaptureCheckout} />
 
     return (
         <React.Fragment>

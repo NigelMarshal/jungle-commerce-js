@@ -17,9 +17,9 @@ const AddressForm = ({checkoutToken, next}) => {
                     <Grid container spacing={3}>
                         <FormInputField required name='firstName' label='First Name' />
                         <FormInputField required name='lastName' label='Last Name' />
-                        <FormInputField required name='Address' label='Address' />
-                        <FormInputField required name='Phone Number' label='Phone Number' />
-                        <FormInputField required name='Email' label='Email' />
+                        <FormInputField required name='address' label='Address' />
+                        <FormInputField required name='phoneNumber' label='Phone Number' />
+                        <FormInputField required name='emailAddress' label='Email' />
                     </Grid>
                     <br />
                     <div style={{display: 'flex', justifyContent: 'space-between'}}>
