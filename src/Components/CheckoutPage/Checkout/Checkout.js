@@ -20,6 +20,8 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
+
+    //Trigger popup after 5 seconds to ask user to continue shopping.
     useEffect(() => {
         const timer = setTimeout(() => {
             setIsOpen(!isOpen);
@@ -27,6 +29,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         return () => clearTimeout(timer);
     }, [setIsOpen]);
 
+    //Generating token using commerce js for cart/checkout details
     useEffect(() => {
         const generateToken = async () => {
             try {
@@ -40,6 +43,7 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
         generateToken();
     }, [cart]);
 
+    //Moving back and forward between steps
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
 

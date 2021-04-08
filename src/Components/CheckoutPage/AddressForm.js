@@ -10,7 +10,7 @@ const AddressForm = ({ checkoutToken, next }) => {
     const methods = useForm();
 
     const [formField, setFormField] = useState(null);
-
+    //Using session storage to store typed in user details when navigating back and forth from user details to payment
     useEffect(() => {
         let fd = {
             firstName: sessionStorage.getItem("firstName") || '',
@@ -28,7 +28,7 @@ const AddressForm = ({ checkoutToken, next }) => {
             phoneNumber: "Phone Number",
             emailAddress: "Email Address"
         }
-
+        //Filling fields from session storage
         let _formField = [];
         Object.keys(fd).forEach(e => {
             _formField.push(<FormInputField key={fd[e] + e} value={fd[e]} required name={e} label={labels[e]} />);
@@ -38,7 +38,6 @@ const AddressForm = ({ checkoutToken, next }) => {
     }, []);
 
     const saveFormData = () => {
-        console.log("Next Clicked");
         let firstName = document.querySelector("input[name=firstName]").value;
         let lastName = document.querySelector("input[name=lastName]").value;
         let address = document.querySelector("input[name=address]").value;

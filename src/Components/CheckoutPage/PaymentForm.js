@@ -3,7 +3,7 @@ import { Button, Typography, Divider } from '@material-ui/core';
 import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import ReviewOrder from './ReviewOrder';
-
+//Using stripe for dummy purchase flow
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
 const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingDetails, onCaptureCheckout, timeout }) => {
@@ -36,11 +36,12 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingDetails, onCap
           }
         }
       }
-
+      //Posting order details to endpoint as per project requirement
       let data = await fetch('https://orderdetails.free.beeceptor.com',
         { method: "POST", body: JSON.stringify(orderData) });
       data = await data.json();
-      console.log("Response from beeceptor: ", data);
+      //Success!
+      console.log("Succes! Response from beeceptor: ", data);
 
       onCaptureCheckout(checkoutToken.id, orderData);
       timeout();

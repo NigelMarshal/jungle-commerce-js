@@ -4,7 +4,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 function FormInputField({ name, label, required, type, value }) {
     const { control } = useFormContext();
-
+    //Using react hooks form to quickly spin out custom text fields
     return (
         <Grid item xs={12} sm={6}>
             <Controller

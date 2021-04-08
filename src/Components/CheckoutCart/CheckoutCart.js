@@ -1,67 +1,68 @@
 import React from 'react'
-import {Typography, Container, Grid, Button} from '@material-ui/core';
+import { Typography, Container, Grid, Button } from '@material-ui/core';
 import CheckoutCartItem from './CheckoutCartItem/CheckoutCartItem';
 import DeleteIcon from '@material-ui/icons/Delete';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
 
-const CheckoutCart = ({ 
+const CheckoutCart = ({
     cart,
     handleUpdateItemQuantity,
     handleRemoveFromCart,
-    handleEmptyCart}) => {
+    handleEmptyCart }) => {
 
     const isCartEmpty = !cart.line_items?.length;
-    
+
     const classes = useStyles();
 
+    //If user goes on link without items/or clears items; show this
     const CreateEmptyCart = () => (
         <Typography variant="subtitle1">You have nothing in your cart!
-            <Link to="/" className={classes.link}> Click here to waste your money on fancy things</Link>            
+            <Link to="/" className={classes.link}> Click here to waste your money on fancy things</Link>
         </Typography>
     );
 
-    const CreateFilledCart = ({item}) => (
+    const CreateFilledCart = ({ item }) => (
         <React.Fragment>
             <Grid container spacing={4}>
                 {cart.line_items.map((item) => (
                     <Grid item xs={12} sm={3} key={item.id}>
-                        <CheckoutCartItem item={item} handleRemoveFromCart={handleRemoveFromCart} handleUpdateItemQuantity={handleUpdateItemQuantity}/>
+                        <CheckoutCartItem item={item} handleRemoveFromCart={handleRemoveFromCart} handleUpdateItemQuantity={handleUpdateItemQuantity} />
                     </Grid>
                 ))}
             </Grid>
             <div className={classes.cardDetails}>
-                    <Typography variant="h4" color="primary">
-                        Total {cart.subtotal.formatted_with_code}
-                    </Typography>
-                    <div>
-                        <Button className={classes.emptyButton}
+                <Typography variant="h4" color="primary">
+                    Total {cart.subtotal.formatted_with_code}
+                </Typography>
+                <div>
+                    <Button className={classes.emptyButton}
                         size="medium"
                         type="button"
                         variant="contained"
                         color="secondary"
                         startIcon={<DeleteIcon />}
                         onClick={handleEmptyCart}
-                        >
-                            Empty your cart
+                    >
+                        Empty your cart
                         </Button>
-                        <Button
+                    <Button
                         component={Link} to="/checkout"
                         className={classes.checkoutButton}
                         size="medium"
                         type="button"
                         variant="contained"
                         color="primary"
-                        >
-                            Proceed to Checkout
+                    >
+                        Proceed to Checkout
                         </Button>
-                    </div>
+                </div>
             </div>
         </React.Fragment>
     );
 
-    if(!cart.line_items) return '<h2>Loading your cart</h2>';
+    if (!cart.line_items) return '<h2>Loading your cart</h2>';
 
     return (
         <Container>

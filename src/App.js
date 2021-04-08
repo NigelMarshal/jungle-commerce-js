@@ -22,7 +22,7 @@ const App = () => {
         const item = await commerce.cart.add(productId, quantity);
         setCart(item.cart);
     }
-
+    //handler for updating items in cart
     const handleUpdateItemQuantity = async (productId, quantity) => {
         const item = await commerce.cart.update(productId, { quantity });
         setCart(item.cart)
@@ -42,7 +42,7 @@ const App = () => {
         const newCart = await commerce.cart.refresh();
         setCart(newCart);
     }
-
+    //Fetch checkout details for parsing data
     const handleCaptureCheckout = async (checkoutTokenId, newOrder) => {
         try {
             const incomingOrder = await commerce.checkout.capture(checkoutTokenId, newOrder);
@@ -59,6 +59,7 @@ const App = () => {
     }, []);
 
     return (
+        //Set up routing paths for user flow
         <Router>
             <div>
                 <Header totalItemsInCart={cart.total_items} />

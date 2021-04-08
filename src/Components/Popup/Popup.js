@@ -1,6 +1,6 @@
 import React from "react";
 import './styles.css';
-
+//Popup that triggers after a successful purchase
 const Popup = props => {
     return (
         <div className="popup-box">
