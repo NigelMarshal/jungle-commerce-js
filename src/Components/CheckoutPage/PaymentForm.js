@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button, Typography,  Divider } from '@material-ui/core';
+import { Button, Typography, Divider } from '@material-ui/core';
 import { CardElement, Elements, ElementsConsumer } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import ReviewOrder from './ReviewOrder';
@@ -13,35 +13,40 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingDetails, onCap
     if (!stripe || !elements) return;
 
     const cardElement = elements.getElement(CardElement);
+    console.log(shippingDetails);
 
     const { error, paymentMethod } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
 
-    if(error){
-        console.log(error);
+    if (error) {
+      console.log(error);
     } else {
-        const orderData = {
-            line_items: checkoutToken.live.line_items,
-            customer: {
-                firstname: shippingDetails.data.firstName,
-                lastname: shippingDetails.data.lastName,
-                email: shippingDetails.data.emailAddress,
-                address: shippingDetails.data.address,
-                number: shippingDetails.data.phoneNumber,
-                },    
-                payment: {
-                    gateway: 'stripe',
-                    stripe: {
-                        payment_method_id: paymentMethod.id
-                    }
-                }
-            }
-            
-            console.log(orderData);
-            onCaptureCheckout(checkoutToken.id, orderData);
-            timeout();
-            nextStep();
+      const orderData = {
+        line_items: checkoutToken.live.line_items,
+        customer: {
+          firstname: shippingDetails.data.firstName,
+          lastname: shippingDetails.data.lastName,
+          email: shippingDetails.data.emailAddress,
+          address: shippingDetails.data.address,
+          number: shippingDetails.data.phoneNumber,
+        },
+        payment: {
+          gateway: 'stripe',
+          stripe: {
+            payment_method_id: paymentMethod.id
+          }
         }
+      }
+
+      let data = await fetch('https://orderdetails.free.beeceptor.com',
+        { method: "POST", body: JSON.stringify(orderData) });
+      data = await data.json();
+      console.log("Response from beeceptor: ", data);
+
+      onCaptureCheckout(checkoutToken.id, orderData);
+      timeout();
+      nextStep();
     }
+  }
 
   return (
     <React.Fragment>
