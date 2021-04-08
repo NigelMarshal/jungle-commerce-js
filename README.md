@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App]
 
+##### DEMO Link: https://junglecommercejs.netlify.app/
+
+
 ## What's this about?
 
 This lil' SPA is a mini web store powered by:
