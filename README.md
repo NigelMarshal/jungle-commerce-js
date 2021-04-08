@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App]
 
-##### DEMO Link: https://junglecommercejs.netlify.app/
+### DEMO Link: https://junglecommercejs.netlify.app/
 
 
 ## What's this about?
